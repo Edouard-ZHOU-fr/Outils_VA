@@ -1,1 +1,2 @@
-git remote add origin https://user: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.com/https://github.com/xxxx/xxxx.git
+git remote set-url origin  https://<your_token>@github.com/<USERNAME>/<REPO>.git
+
