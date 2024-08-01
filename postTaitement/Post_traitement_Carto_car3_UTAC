@@ -1,0 +1,43 @@
+noetic
+roscore
+
+noetic
+rosparam set use_sim_time true
+source ros/mapping_ws/devel/setup.bash 
+roslaunch hdl_graph_slam hdl_graph_slam_floam.launch enable_gps:=true gnss_topic:=/fixposition/converter/gpsfix
+
+noetic
+source ros/mapping_ws/devel/setup.bash 
+roslaunch pointcloud_fusion ls_leddartech_pointcloud_fusion_node_car3.launch 
+ 
+
+cd ros/mapping_ws/src
+noetic
+roslaunch milla_car3_frames.launch 
+
+
+
+
+noetic
+rosbag play output_ros10.bag --clock -r 0.1 /tf:=/tf_old
+
+
+
+
+source ros/mapping_ws/devel/setup.bash 
+rosservice call /hdl_graph_slam/save_map "utm: false 
+resolution: 0.0
+destination: '/media/milla/SSD4To/Log_UTAC/nuages_de_points/maps.pcd'"
+
+
+
+roslaunch utils pcd_utm2mgrs.launch map_name:="maps" map_path:="/media/milla/SSD4To/Log_UTAC/nuages_de_points/" zone:="31UDP" utm_file_path:="/media/milla/SSD4To/Log_UTAC/nuages_de_points/maps.pcd.utm"
+
+
+
+Puis on peut visualiser la cartographie PCD :
+cd map/map_v2
+
+pcl_viewer maps_mgrs.pcd 
+
+

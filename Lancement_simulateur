@@ -1,0 +1,29 @@
+source ros/milla_ros2_ws/install/setup.bash 
+
+ros2 launch autoware_launch planning_simulator.launch.xml map_path:=$HOME/ros/velizy_map_planning vehicle_model:=renault_master_l2h2 sensor_model:=empty_sensor_kit
+
+ros2 launch autoware_launch planning_simulator.launch.xml map_path:=$HOME/ros/louvois_map_planning vehicle_model:=renault_master_l2h2 sensor_model:=empty_sensor_kit
+
+
+ros2 launch autoware_launch planning_simulator.launch.xml map_path:=$HOME/ros/satory_map_planning vehicle_model:=renault_master_l2h2 sensor_model:=empty_sensor_kit
+
+ros2 launch autoware_launch planning_simulator.launch.xml map_path:=$HOME/ros/saclay_map_planning vehicle_model:=renault_master_l2h2 sensor_model:=empty_sensor_kit
+
+ros2 launch autoware_launch planning_simulator.launch.xml map_path:=$HOME/ros/la_rochelle_map_planning vehicle_model:=renault_master_l2h2 sensor_model:=empty_sensor_kit
+
+
+ros2 launch autoware_launch planning_simulator.launch.xml map_path:=$HOME/ros/guyancourt_map_planning vehicle_model:=renault_master_l2h2 sensor_model:=empty_sensor_kit
+
+ros2 launch autoware_launch planning_simulator.launch.xml map_path:=$HOME/ros/turin_map_planning vehicle_model:=renault_master_l2h2 sensor_model:=empty_sensor_kit
+
+ros2 launch autoware_launch planning_simulator.launch.xml map_path:=$HOME/ros/utac_map_planning vehicle_model:=renault_master_l2h2 sensor_model:=empty_sensor_kit
+
+
+ros2 launch autoware_launch planning_simulator.launch.xml map_path:=$HOME/ros/mobauto_map_planning vehicle_model:=renault_master_l2h2 sensor_model:=empty_sensor_kit
+
+ros2 launch autoware_launch planning_simulator.launch.xml map_path:=$HOME/ros/laposte_map_planning vehicle_model:=renault_master_l2h2 sensor_model:=empty_sensor_kit
+
+ros2 launch autoware_launch planning_simulator.launch.xml map_path:=$HOME/ros/la_rochelle_map_planning vehicle_model:=renault_master_l2h2 sensor_model:=empty_sensor_kit
+
+
+
