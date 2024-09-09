@@ -24,7 +24,7 @@ def print_c(clignotant):
 #############################################################################
 
 
-input_file = "/home/hongyu/Videos/Screencasts/1.webm"
+input_file = "/home/hongyu/Videos/Screencasts/4sep_laposte.webm"
 output_file = "/home/hongyu/SETUP/larochelle/1.mp4"
 
 
@@ -32,7 +32,9 @@ output_file = "/home/hongyu/SETUP/larochelle/1.mp4"
 #############################################################################
 
 
-
+if not cv2.cuda.getCudaEnabledDeviceCount():
+    print("CUDA is not available. Please make sure CUDA drivers are installed.")
+    exit()
 
 startTime = time.time()
 
