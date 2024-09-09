@@ -23,9 +23,9 @@ def enregistement_traj(r_rosbag,r_sorite):
     c_rosbag = "ros2 bag play -r 100 "+r_rosbag
     c_txt = f"ros2 topic echo /tf >> {r_sorite}traj.txt"
     global processe1
-    processe1 = subprocess.Popen(c_rosbag, shell=True, stdout=None) 
-    time.sleep(5)
     processe2 = subprocess.Popen(c_txt, shell=True, stdout=subprocess.PIPE) 
+    # time.sleep(1)
+    processe1 = subprocess.Popen(c_rosbag, shell=True, stdout=None) 
 
     processe1.wait()
     kill(processe2.pid)
