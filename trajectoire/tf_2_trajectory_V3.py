@@ -11,6 +11,8 @@ import tkinter.messagebox
 import subprocess, signal
 import sys,shutil
 import psutil
+from tkinter import filedialog
+
 
 
 def kill(proc_pid):
@@ -102,16 +104,41 @@ def print_selection(v=""):
         frequence = var1.get()
         l.config(text='you have selected ' + str(frequence))
 
+def drag_enter(event):
+    drop_area.config(bg="lightblue")
 
+def drag_leave(event):
+    drop_area.config(bg="white")
+
+# def drag_clique():
+#     drop_area.config(bg="gray")
+#     pass
+
+def drag_drop(event):
+    global file_path
+    drop_area.config(bg="white")
+    window.withdraw()
+    # file_path = filedialog.askopenfilename()
+    file_path = filedialog.askdirectory()
+
+    # window.geometry('750x650')
+    # window.update()
+
+    file_path = file_path+"/"
+    var.set("Repertoire du Rosbag que vous avez choisi: "+file_path)
+    window.deiconify()
+    window.update()
+
+    print(file_path)
 
 def valider():
     global frequence
 
 
-    if os.path.isdir(e1.get()): 
-        var.set("le repertoire sortie: "+e1.get()+"\nfilterRate: "+str(frequence))
-        r_rosbag = e0.get()
-        r_sorite = e1.get()
+    if os.path.isdir(file_path): 
+        # var.set("le repertoire sortie: "+e1.get()+"\nfilterRate: "+str(frequence))
+        r_rosbag = file_path
+        r_sorite = r_rosbag
         r_txt = r_sorite+"traj.txt"
 
         enregistement_traj(r_rosbag,r_sorite)
@@ -134,21 +161,22 @@ def valider():
 
 
 window = tk.Tk()
-window.title("Mon fenetre")
+window.title("Creation la trajectoire a partir de ROS2 BAG")
 window.geometry('750x650')
 window.resizable(False, False)
 
 
-l0 = tk.Label(window, text='Saisir le repertoire de ROS2BAG  (avec/ à la fin):', bg='green', font=('Arial', 11), width=65, height=2)
-l1 = tk.Label(window, text='Saisir le repertoire sortie (avec/ à la fin):', bg='green', font=('Arial', 11), width=65, height=2)
+# l0 = tk.Label(window, text='Saisir le repertoire de ROS2BAG  (avec/ à la fin):', bg='green', font=('Arial', 11), width=65, height=2)
+# l1 = tk.Label(window, text='Saisir le repertoire sortie (avec/ à la fin):', bg='green', font=('Arial', 11), width=65, height=2)
 
-e0 = tk.Entry(window, show=None, font=('Arial', 11),width=68)
-e1 = tk.Entry(window, show=None, font=('Arial', 11),width=68)
+# e0 = tk.Entry(window, show=None, font=('Arial', 11),width=68)
+# e1 = tk.Entry(window, show=None, font=('Arial', 11),width=68)
+drop_area = tk.Label(window,text="Ouvrir le dossier \ndu Ros2Bag ", font=('Arial', 14), bg="white",width=20,height=5)
 
 
 
 var = tk.StringVar()    # 将label标签的内容设置为字符类型，用var来接收hit_me函数的传出内容用以显示在标签上
-a = tk.Label(window, textvariable=var, bg='gray', fg='white', font=('Arial', 11), width=75, height=18)
+a = tk.Label(window, textvariable=var, bg='gray', fg='white', font=('Arial', 11), width=75, height=16)
 
 
 
@@ -167,10 +195,17 @@ if var1.get() != 0 :
     print(frequence)
 
 
-l0.pack(pady=10)    
-e0.pack(ipady=3)    
-l1.pack(pady=10)  
-e1.pack(ipady=3) 
+drop_area.bind("<Enter>",drag_enter)
+drop_area.bind("<Leave>",drag_leave)
+drop_area.bind("<ButtonRelease-1>",drag_drop)
+
+
+# l0.pack(pady=10)    
+# e0.pack(ipady=3)    
+# l1.pack(pady=10)  
+# e1.pack(ipady=3) 
+drop_area.pack(pady=10) 
+
 l.pack(pady=10)
 s.pack()
 c1.pack()

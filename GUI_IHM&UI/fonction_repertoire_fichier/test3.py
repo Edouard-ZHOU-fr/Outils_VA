@@ -14,18 +14,22 @@ def drag_enter(event):
 def drag_leave(event):
     drop_area.config(bg="white")
 
+# def drag_clique():
+#     drop_area.config(bg="gray")
+#     pass
+
 def drag_drop(event):
     drop_area.config(bg="white")
     # file_path = filedialog.askopenfilename()
     file_path = filedialog.askdirectory()
+    file_path = file_path+"/"
 
-
-    # file_path = event.data
     print(file_path)
-    # show_file_path(file_path)
 
 drop_area.bind("<Enter>",drag_enter)
 drop_area.bind("<Leave>",drag_leave)
+# drop_area.bind("<Button-1>",drag_clique)
+
 drop_area.bind("<ButtonRelease-1>",drag_drop)
 
 drop_area.pack()
