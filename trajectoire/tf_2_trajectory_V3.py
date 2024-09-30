@@ -125,7 +125,7 @@ def drag_drop(event):
     # window.update()
 
     file_path = file_path+"/"
-    var.set("Repertoire du Rosbag que vous avez choisi: "+file_path)
+    var.set("Repertoire du Rosbag que vous avez choisi: \n"+file_path)
     window.deiconify()
     window.update()
 
