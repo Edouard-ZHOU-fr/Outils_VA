@@ -5,6 +5,18 @@ import csv
 import time
 
 
+
+#########################################################################################################
+
+
+input_traj = "traj.csv"
+input_lanelet2 = "Test.osm"
+
+
+#########################################################################################################
+
+
+
 def filtre_1d(n):
     return np.ones(n)*(1/n) , n
 
@@ -127,13 +139,7 @@ print("####### Chargement les fichiers #############")
 
 start = time.time()
 
-
-# domTree = ET.parse("mobauto_lanelet2_maps_v0.18.5.osm")
-domTree = ET.parse("Test.osm")
-
-# domTree = ET.parse("lanelet2_maps_la_post_V21.osm")
-
-
+domTree = ET.parse(input_lanelet2)
 root = domTree.getroot()
 
 
@@ -167,7 +173,6 @@ for node in nodes:
 # print(points)
 
 
-input_traj = 'traj.csv'
 dico_id_z = matching_traj_lanelet(input_traj,points)
 
 
