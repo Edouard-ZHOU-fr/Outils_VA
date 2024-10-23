@@ -78,23 +78,32 @@ def matching_traj_lanelet(input_traj,points_lanelet) ->dict:
                   
 	f.close()
 
-	# x = np.array(range(len(zlist_traj)))
-	# y = np.array( zlist_traj )
+	x = np.array(range(len(zlist_traj)))
+	y = np.array( zlist_traj )
 
-	# plt.xlabel("Numéro",fontdict={'size': 16})
-	# plt.ylabel("Z",fontdict={'size': 16})
-	# plt.title("hauteur_de_chaque_points",fontdict={'size': 16})
-	# plt.xticks([])
-	# plt.yticks([])
-	# plt.plot(x, y, color = 'r')
-	# plt.show()
+	plt.xlabel("Numéro",fontdict={'size': 16})
+	plt.ylabel("Z",fontdict={'size': 16})
+	plt.title("hauteur_de_chaque_points",fontdict={'size': 16})
+	plt.xticks([])
+	plt.yticks([])
+	plt.subplot(2,1,1)
+	plt.plot(x, y, color = 'r')
 
 	# return dico_id_z
 	print_reussi("Les fichiers sont bien chargés")
 
-	for point_traj in point_traj:
-		# gilsser le trajectoire ci besoin (avec convolution_1d_padding) TODO
-		pass
+	# gilsser le trajectoire ci besoin (avec convolution_1d_padding) TODO
+	# zlist_traj_N = convolution_1d_padding(zlist_traj)
+	# for i in range(len(points_traj)) :
+	# 	points_traj[i][2] = zlist_traj_N[i]
+
+	# y2 = np.array( zlist_traj_N )
+	# plt.subplot(2,1,2)
+	# plt.plot(x, y2, color = 'g')
+
+	plt.show()
+
+
 
 	print_c("####### En train de Matching  #############")
 
@@ -198,7 +207,6 @@ print("Il y a %d points 3d total, dont %d points 3d sont déplacés"%(num_total,
 end = time.time()
 print("Temps d'éxecusion: "+str(end-start)+" s\n")
 #########################################################################################################
-
 
 
 
